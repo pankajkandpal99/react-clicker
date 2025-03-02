@@ -11,6 +11,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 app.use(express.json());
 
 app.get("/", (_req: Request, res: Response) => {
