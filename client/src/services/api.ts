@@ -37,7 +37,6 @@ export const handleClick = async () => {
         },
       }
     );
-    console.log("Response Headers:", response.headers);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
