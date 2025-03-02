@@ -12,6 +12,10 @@ const app = express();
 app.use(cors(corsConfig));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
 app.use("/api", userRoutes);
 
 connectDB().then(() => {
