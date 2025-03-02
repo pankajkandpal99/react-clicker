@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.BASE_URL || "https://react-clicker.vercel.app";
+const BASE_URL =
+  import.meta.env.VITE_MY_BASE_URL || "https://react-clicker.vercel.app";
 
 const api = axios.create({
   baseURL: `${BASE_URL}/api`,
