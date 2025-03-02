@@ -1,5 +1,5 @@
 export const corsConfig = {
-  origin: ["http://localhost:5173", "https://our-deployed-url.com"],
+  origin: ["http://localhost:5173", process.env.MY_BACKEND_URL!],
 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -7,5 +7,3 @@ export const corsConfig = {
   preflightContinue: false,
   optionsSuccessStatus: 204,
 };
-
-
