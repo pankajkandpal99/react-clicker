@@ -5,22 +5,38 @@ import { corsConfig } from "./config/corsConfig";
 import { Request, Response } from "express";
 import { userRoutes } from "./routes/userRoutes";
 import connectDB from "./config/db";
-
 dotenv.config();
 
 const app = express();
-
 app.use(cors(corsConfig));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://react-clicker.vercel.app");
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://react-clicker.vercel.app",
+  ];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 
 app.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://react-clicker.vercel.app");
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://react-clicker.vercel.app",
+  ];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.status(204).send();
